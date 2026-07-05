@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: netflix-clone
+  datasource:
+    url: jbdc:postgresql://localhost:5432/netflix_db
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2GB
+      max-request-size: 2GB
+server:
+  tomcat:
+    max-swallow-size: -1
+    max-http-form-post-size: -1
+file:
+  upload:
+    video-dir: uploads/videos
+    image-dir: uploads/images
