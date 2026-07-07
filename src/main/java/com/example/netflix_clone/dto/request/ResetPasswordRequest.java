@@ -9,7 +9,7 @@ import lombok.Data;
 public class ResetPasswordRequest {
 
 
-    @NotBlank
+    @NotBlank(message = "Token is required")
     private String token;
 
     @NotBlank

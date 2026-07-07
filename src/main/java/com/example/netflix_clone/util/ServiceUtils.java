@@ -3,6 +3,7 @@ package com.example.netflix_clone.util;
 import com.example.netflix_clone.dao.UserRepository;
 import com.example.netflix_clone.dao.VideoRepository;
 import com.example.netflix_clone.entity.User;
+import com.example.netflix_clone.entity.Video;
 import com.example.netflix_clone.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -23,4 +24,9 @@ public class ServiceUtils {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
     }
+    public Video getVideoByIdOrThrow(Long id){
+        return videoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Video not found with id: "+id));
+    }
+
 }

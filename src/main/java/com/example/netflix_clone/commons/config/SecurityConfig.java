@@ -21,7 +21,14 @@ public class SecurityConfig {
     private final JwtFilter jwtFilter;
 
     private static final String[] PUBLIC_ENDPOINT = {
-            "/**"
+            "/api/auth/signup",
+            "/api/auth/login",
+            "/api/auth/logout",
+            "/api/auth/send-link-verify-email",
+            "/api/auth/validate-email",
+            "/api/auth/reset-password",
+            "/api/auth/verify-email",
+            "/api/auth/forgot-password"
     };
 
 
