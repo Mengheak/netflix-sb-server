@@ -1,6 +1,5 @@
 package com.example.netflix_clone.serviceImpl;
 
-import com.example.netflix_clone.commons.enums.Role;
 import com.example.netflix_clone.dao.UserRepository;
 import com.example.netflix_clone.dto.request.EmailRequest;
 import com.example.netflix_clone.dto.request.UserRequest;
@@ -8,6 +7,7 @@ import com.example.netflix_clone.dto.response.EmailValidationResponse;
 import com.example.netflix_clone.dto.response.LoginResponse;
 import com.example.netflix_clone.dto.response.MessageResponse;
 import com.example.netflix_clone.entity.User;
+import com.example.netflix_clone.enums.Role;
 import com.example.netflix_clone.exception.*;
 import com.example.netflix_clone.security.JwtUtil;
 import com.example.netflix_clone.service.AuthService;

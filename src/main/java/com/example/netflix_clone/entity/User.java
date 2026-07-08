@@ -1,7 +1,7 @@
 package com.example.netflix_clone.entity;
 
 
-import com.example.netflix_clone.commons.enums.Role;
+import com.example.netflix_clone.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
