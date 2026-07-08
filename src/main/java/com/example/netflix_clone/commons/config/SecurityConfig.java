@@ -1,5 +1,6 @@
 package com.example.netflix_clone.commons.config;
 
+import com.example.netflix_clone.security.ApiResponseAuthenticationEntryPoint;
 import com.example.netflix_clone.security.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
@@ -19,6 +21,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
+    private final ApiResponseAuthenticationEntryPoint apiResponseAuthenticationEntryPoint;
+    private final AccessDeniedHandler accessDeniedHandler;
+
 
     private static final String[] PUBLIC_ENDPOINT = {
             "/api/auth/signup",
@@ -38,6 +43,11 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(
+                        ex -> ex
+                                .authenticationEntryPoint(apiResponseAuthenticationEntryPoint)
+                                .accessDeniedHandler(accessDeniedHandler)
+                )
                 .authorizeHttpRequests(auth ->
                         auth
                                 .requestMatchers(PUBLIC_ENDPOINT)
